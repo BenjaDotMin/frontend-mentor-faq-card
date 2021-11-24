@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
+
+//Text
+$darkDesaturatedBlue: hsl(238, 29%, 16%);
+$softRed: hsl(14, 88%, 65%);
+$darkGrayishBlue: hsl(237, 12%, 33%);
+$veryDarkGrayishBlue: hsl(240, 6%, 50%);
+
+//Gradient
+$softViolet: hsl(273, 75%, 66%);
+$softBlue: hsl(240, 73%, 65%);
+
+//Dividers
+$grayishBlue: hsl(240, 5%, 91%);
+
+*{box-sizing: border-box;}
+html{font-size: 62.5%;            
+    &::-webkit-scrollbar{width: 8px; height: 8px;}
+    &::-webkit-scrollbar-track{background: rgba(0, 0, 0, 0.1);}
+    &::-webkit-scrollbar-thumb{background: #888; border-radius: 10px;}
+    &::-webkit-scrollbar-thumb:hover{background: #555;}
+}
+body{margin:0; font-family: 'Kumbh Sans', sans-serif; background-image: linear-gradient(0deg, $softBlue 0%, $softViolet 100%); 
+    main{display: grid; place-items: center; min-height: 100vh;
+        img{
+            &.box-image{position: absolute; left: -93px; top: 204px; z-index: 2;}
+            &.woman-with-computer-mobile{display: none; position: absolute; top:0; left:50%; transform: translate(-50%, -60%); min-width: 250px; max-width: 328px;}
+            &.background-pattern-mobile{display: none; position: absolute; top:0; left:50%; transform: translate(-50%, 0); min-width: 248px; max-width: 320px;}
+        }
+        
+        .card-wrapper{padding: 40px 0;
+            .card{position: relative; padding: 64px 95px 82px 0; width: 90vw; max-width: 920px; margin-top: -2px; margin-left: 42px; border-radius: 23px; box-shadow: 0 50px 50px -25px rgba(0, 0, 0, 0.4); display: flex; justify-content: flex-end; background: url("../images/illustration-woman-online-desktop.svg") no-repeat -84px 70px, url("../images/bg-pattern-desktop.svg") no-repeat -577px -295px/105% white; box-shadow: 0px 50px 40px 0px rgba(0, 0, 0, 0.2); 
+                h1{margin: 0; font-size: 3.1rem; letter-spacing: 0.03rem; color:$darkDesaturatedBlue;}
+                ul{margin: 22px 0 0; padding: 0;
+                    li{list-style: none; font-size: 1.4rem; letter-spacing: 0.01rem; border-bottom: 1px solid $grayishBlue; padding: 16px 0; position: relative; 
+                        .dropdown{ max-height: 0; overflow: hidden; transition: 0.2s; will-change: max-height;            
+                            p{margin: 0; font-size: 1.2rem; color:$veryDarkGrayishBlue; letter-spacing: 0.003rem; transition: 0.3s; will-change: transform, opacity; opacity: 0; transform: translate3d(10px, 0, 0); display: initial;}
+                        }  
+                        label{display: block; color:$darkDesaturatedBlue; background: url("../images/icon-arrow-down.svg") no-repeat right 15px top 6px; background-size: 10px; transition: color 0.2s; will-change: color;}
+                        input[type="checkbox"]{position: absolute; opacity: 0; width: 100%; height: 100%; left: 0; top:0; z-index: 2; cursor: pointer; padding: 0; margin: 0; border:none;
+                            &:focus-visible{outline: none;}
+                            &:hover{
+                                &+label{color: $softRed;}
+                            }
+                            &:checked{
+                                &+label{font-weight: 700; background: url("../images/icon-arrow-up.svg") no-repeat right 15px top 4px; background-size: 10px;
+                                    &+.dropdown{max-height: 40px; margin-top: 10px;
+                                        p{opacity: 1; transform: translate3d(0, 0, 0);}
+                                    }
+                                }
+                            }
+                        }                   
+                    }
+                }
+                &:after{content: ""; height: 90px; width: 90px; position: absolute; filter: blur(18px); opacity: 0.22; background: black; left: -42px; top: 245px;}
+            }            
+        }       
+        .faq{max-width: 349px;}
+
+        @media(max-width:980px){
+            img{
+                &.woman-with-computer-mobile, &.background-pattern-mobile{display: block;}
+            }
+            .card-wrapper{padding: 150px 0 40px;
+                .card{background: white; margin: 0; padding: 140px 25px 50px; justify-content: center;
+                    h1{text-align: center;}
+                    .box-image{display: none;}
+                    .dropdown, label{padding-right: 40px;}
+                    ul{
+                        li{
+                            input{
+                                &:hover{
+                                    &+label{color:$darkDesaturatedBlue !important;}
+                                }
+                            }
+                        }
+                    }
+                    &:after{content: none;}
+                }
+            }  
+            .faq{max-width: none;}          
+        }
+    }
+}
